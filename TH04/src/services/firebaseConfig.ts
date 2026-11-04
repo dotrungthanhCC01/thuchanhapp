@@ -1,11 +1,11 @@
-// Dán cấu hình lấy từ Firebase Console > Project settings > Your apps > Web app.
+// Cấu hình lấy từ Firebase Console > Project settings > Your apps > Web app.
 // databaseURL lấy ở trang Realtime Database (xem hướng dẫn trong README.md).
 export const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  databaseURL: 'https://YOUR_PROJECT_ID-default-rtdb.asia-southeast1.firebasedatabase.app',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
-  messagingSenderId: 'YOUR_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  apiKey: 'AIzaSyC-TtS41ZDyQeGAZz63dnI6TMUcPjxgDss',
+  authDomain: 'chatmate-th04.firebaseapp.com',
+  databaseURL: 'https://chatmate-th04-default-rtdb.asia-southeast1.firebasedatabase.app',
+  projectId: 'chatmate-th04',
+  storageBucket: 'chatmate-th04.firebasestorage.app',
+  messagingSenderId: '536771990851',
+  appId: '1:536771990851:web:26d4b9816b0b6cdfe3cbf6',
 };
