@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && $uid === auth.uid",
+        "name": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100" },
+        "email": { ".validate": "newData.isString()" },
+        "online": { ".validate": "newData.isBoolean()" },
+        "lastSeen": { ".validate": "newData.isNumber()" },
+        "$other": { ".validate": false }
+      }
+    },
+    "messages": {
+      "$chatId": {
+        ".read": "auth != null && ($chatId.beginsWith(auth.uid + '_') || $chatId.endsWith('_' + auth.uid))",
+        ".indexOn": ["createdAt"],
+        "$messageId": {
+          ".write": "auth != null && !data.exists() && ($chatId.beginsWith(auth.uid + '_') || $chatId.endsWith('_' + auth.uid))",
+          ".validate": "newData.hasChildren(['senderId', 'type', 'createdAt']) && newData.child('senderId').val() === auth.uid && newData.child('createdAt').isNumber() && ((newData.child('type').val() === 'text' && newData.child('text').isString() && newData.child('text').val().length > 0) || (newData.child('type').val() === 'location' && newData.child('latitude').isNumber() && newData.child('longitude').isNumber()))"
+        }
+      }
+    },
+    "userChats": {
+      "$uid": {
+        ".read": "auth != null && $uid === auth.uid",
+        "$otherUid": {
+          ".write": "auth != null && ($uid === auth.uid || $otherUid === auth.uid)"
+        }
+      }
+    }
+  }
+}
